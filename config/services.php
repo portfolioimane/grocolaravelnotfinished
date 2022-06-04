@@ -14,18 +14,6 @@ return [
     |
     */
 
-    'facebook' => [ 
-                'client_id' => env ( 'FB_CLIENT_ID' ),
-                'client_secret' => env ( 'FB_CLIENT_SECRET' ),
-                'redirect' => env ( 'FB_REDIRECT' ) 
-        ],
-
-    'google' => [ 
-                'client_id' => env ( 'Google_CLIENT_ID' ),
-                'client_secret' => env ( 'Google_CLIENT_SECRET' ),
-                'redirect' => env ( 'Google_REDIRECT' ) 
-        ],
-
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
         'secret' => env('MAILGUN_SECRET'),
