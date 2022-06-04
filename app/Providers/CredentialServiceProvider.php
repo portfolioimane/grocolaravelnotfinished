@@ -35,7 +35,7 @@ class CredentialServiceProvider extends ServiceProvider
                 $provider_array[$value->provider] = [
                     'client_id'     => $value->app_id,
                     'client_secret' => $value->app_secret,
-                    'redirect'      => url('/') . '/' . 'login/' . $value->provider . '/callback',
+                    'redirect'      => env('APP_URL') . '/' . 'login/' . $value->provider . '/callback',
                 ];
 
             }
