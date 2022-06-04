@@ -35,7 +35,7 @@ class CredentialServiceProvider extends ServiceProvider
                 $provider_array[$value->provider] = [
                     'client_id'     => $value->app_id,
                     'client_secret' => $value->app_secret,
-                    'redirect'      => 'https://warm-ridge-54087.herokuapp.com/login/google/callback',
+                    'redirect'      => env('APP_URL') . 'login/' . $value->provider . '/callback',
                 ];
 
             }
