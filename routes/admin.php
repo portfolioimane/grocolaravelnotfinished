@@ -8,16 +8,34 @@ Route::group(['prefix'=>'admin','middleware'=>['auth:admin','permission']],funct
     'uses' => 'Dashboard\DashboardController@index',
   ]);
 
+  Route::resource('role','Admin\RoleController'); 
+  Route::get('role/delete/{id}','Admin\RoleController@destroy');
+  Route::post('role/update/{id}','Admin\RoleController@update');
+  Route::post('permission','Admin\RoleController@Permission');
+  Route::get('role-list','Admin\RoleController@RoleList');
+  Route::get('all-role','Admin\RoleController@allRole');
+  
+
+  // admin manage 
+  Route::resource('admin','Admin\AdminController');
+  Route::get('admin/delete/{id}','Admin\AdminController@destroy');
+  Route::get('admin/{id}/edit','Admin\AdminController@edit');
+  Route::get('admin/status/{id}','Admin\AdminController@changeStatus');
+  Route::post('admin/update/{id}','Admin\AdminController@update');
+
+  Route::get('admin-list','Admin\AdminController@adminList');
+  Route::get('all-area','Admin\AdminController@areaList');
 
   Route::get('password',[
     'as' => 'change.password',
     'uses' => 'Admin\AdminController@getChangePage',
   ]);
-
-    Route::post('password',[
+  Route::post('password',[
     'as' => 'admin.changepass.submit',
     'uses' => 'Admin\AdminController@saveChangePass',
   ]);
+
+  
  });
 
 // admin register login 

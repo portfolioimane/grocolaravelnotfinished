@@ -41,7 +41,7 @@
                 <ul class="nav nav-second-level collapse">
                         @foreach($value['sub_menu'] as $sub)
                         <li @if(Route::currentRouteName() == $sub->menu_url) class="active active_url" @endif>
-                            <a href="{{ $sub->menu_url ? '' : '' }}" >
+                            <a href="{{ $sub->menu_url ? route($sub->menu_url) : '' }}" >
                                 {{ $sub->name }}
                             </a>
                       
@@ -53,7 +53,7 @@
             @else 
 
             <li @if(Route::currentRouteName() == $value['url']) class="active" @endif>
-                <a href="{{ $value['url'] ? '' : '' }}">
+                <a href="{{ $value['url'] ? route($value['url']) : '' }}">
                     <i class="fa {{ $value['icon'] }}"></i>
                     <span>{{ $value['name'] }}</span>
                 </a>

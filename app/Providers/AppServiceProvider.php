@@ -28,6 +28,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+         Validator::extend('image64', function ($attribute, $value, $parameters, $validator) {
+            $type = explode('/', explode(':', substr($value, 0, strpos($value, ';')))[1])[1];
+            if (in_array($type, $parameters)) {
+                return true;
+            }
+            return false;
+        });
         
         $shop_info = cache()->remember('shop-info', 43000, function () {
             return ShopSetting::orderBy('id', 'desc')->first();

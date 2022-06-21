@@ -53,3 +53,52 @@ function subMenu($role_id, $id)
         ->orderBy('president', 'ASC')
         ->get()->toArray();
 }
+
+function makeNested($source)
+{
+    $menu = array();
+
+    $sub_menu = array();
+
+    $new_menu = [];
+
+    foreach ($source as &$s) {
+        if ($s['parent_id'] == 0) {
+            // no parent_id so we put it in the root of the array
+            $menu[] = &$s;
+        }
+        if ($s['parent_id'] != 0) {
+            // it have  parent id so making child id
+            $sub_menu[] = &$s;
+        }
+    }
+
+    // in this loop we are puting child into there parent
+    foreach ($menu as $key => $value) {
+        $value['sub_menu'] = [];
+        foreach ($sub_menu as $sk => $sub) {
+
+            if ($value['id'] == $sub['parent_id']) {
+
+                array_push($value['sub_menu'], $sub);
+
+            }
+        }
+
+        array_push($new_menu, $value);
+    }
+
+    return $new_menu;
+}
+
+function frontCategory()
+{
+
+    return cache()->remember('all-category', 43000, function () {
+        return App\Model\Category::select('id', 'category_name', 'category_native_name', 'icon')
+            ->with('sub_category.sub_sub_category')
+            ->where('status', '=', 1)
+            ->get();
+    });
+
+}

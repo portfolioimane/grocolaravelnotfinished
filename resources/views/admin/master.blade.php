@@ -58,9 +58,23 @@
 
 <body class="" onload="loaded()">
 
-<div id="wrapper">
+    <div id="wrapper">
        @include('admin.include.sidebar')
-</div>
+        <div id="page-wrapper" class="gray-bg">
+          <div class="row border-bottom">
+            @include('admin.include.topbar')
+          </div>
+
+        <!-- all dynamic content will go there  -->
+        @yield('content')
+
+            <div class="footer">
+                <div>
+                    <strong>A Service By </strong> &copy; <a href="https://automation.limmexbd.com">Limmex Automation</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

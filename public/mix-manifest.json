@@ -1,4 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/role.js": "/js/role.js",
+    "/js/admin.js": "/js/admin.js",
+    "/js/category.js": "/js/category.js",
+    "/js/sub_category.js": "/js/sub_category.js",
     "/css/app.css": "/css/app.css"
 }

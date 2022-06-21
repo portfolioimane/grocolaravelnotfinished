@@ -21,7 +21,14 @@
                 </div>
             </div>
 
-        
+            <create-role></create-role>
+
+            <div class="wrapper wrapper-content">
+               <view-role></view-role>
+            </div>
 
 @endsection
 
+@push('script')
+ <script src="{{ asset('js/role.js') }}"></script>
+@endpush
